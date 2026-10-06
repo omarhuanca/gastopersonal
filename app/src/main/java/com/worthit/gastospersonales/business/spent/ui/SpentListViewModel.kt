@@ -9,6 +9,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.worthit.gastospersonales.business.spent.domain.SpentRepository
 import com.worthit.gastospersonales.business.spent.infrastructure.SpentRepositoryImpl
 import com.worthit.gastospersonales.core.database.AppDatabase
+import com.worthit.gastospersonales.core.ui.toDisplayAmount
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -45,7 +46,7 @@ class SpentListViewModel(private val repository: SpentRepository) : ViewModel() 
                             id = it.getId() ?: 0,
                             description = it.getDescription(),
                             date = it.getLocalDate(),
-                            amount = "${it.getAmount()} ${it.getCoin().getCode()}",
+                            amount = "${it.getAmount().toDisplayAmount()} ${it.getCoin().getCode()}",
                             category = it.getCategory().getCode()
                         )
                     }

@@ -1,6 +1,7 @@
 package com.worthit.gastospersonales.business.spent.ui.report
 
 import com.worthit.gastospersonales.business.spent.domain.Spent
+import com.worthit.gastospersonales.core.ui.toDisplayAmount
 import java.time.LocalDate
 
 data class DetailEntry(
@@ -34,6 +35,8 @@ fun categoryDetail(
         totals = totalsByCoin(inCategory),
         entries = inCategory
             .sortedByDescending { it.getLocalDate() }
-            .map { DetailEntry(it.getDescription(), it.getLocalDate(), "${it.getAmount()} ${it.getCoin().getCode()}") }
+            .map {
+                DetailEntry(it.getDescription(), it.getLocalDate(), "${it.getAmount().toDisplayAmount()} ${it.getCoin().getCode()}")
+            }
     )
 }

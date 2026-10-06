@@ -46,6 +46,20 @@ class CategoryDetailTest {
         Assert.assertEquals("900.0 BOB", detail.entries.first().amount)
     }
 
+    // Regression: ISSUE-002 — amounts of 10,000,000 or more were shown as "1.0E7" / "1.23456789E7"
+    // Found by /qa on 2026-10-06
+    // Report: .gstack/qa-reports/run-20261006T232313Z/qa-report-gastospersonales-2026-10-06.md
+    // Value: protects=big amounts print in plain notation; fails_when=an amount goes through Double.toString again; why_new=no test used amounts of 1e7 or more; seam=none
+    @Test
+    fun bigAmountsAreNotShownInScientificNotation() {
+        val big = listOf(
+            spent("big", d1, 12345678.9, "BOB", "General"),
+            spent("round", d2, 10000000.0, "BOB", "General")
+        )
+        val amounts = categoryDetail(big, "General", start, end).entries.map { it.amount }
+        Assert.assertEquals(listOf("10000000.0 BOB", "12345678.9 BOB"), amounts)
+    }
+
     @Test
     fun keepsTheRangeItWasOpenedWith() {
         val detail = categoryDetail(spents, "General", start, end)

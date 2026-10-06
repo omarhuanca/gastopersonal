@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.worthit.gastospersonales.R
 import com.worthit.gastospersonales.core.ui.domainErrorRes
+import com.worthit.gastospersonales.core.ui.toInputAmount
 import com.worthit.gastospersonales.business.category.domain.Category
 import com.worthit.gastospersonales.business.category.domain.CategoryRepository
 import com.worthit.gastospersonales.business.category.infrastructure.CategoryRepositoryImpl
@@ -69,13 +70,12 @@ class SpentViewModel(
     private fun loadSpent(id: Long) {
         viewModelScope.launch {
             val spent = spentRepository.findById(id) ?: return@launch
-            val amount = spent.getAmount()
             _uiState.update {
                 it.copy(
                     date = spent.getLocalDate(),
                     prefill = SpentPrefill(
                         description = spent.getDescription(),
-                        amount = if (amount % 1.0 == 0.0) amount.toLong().toString() else amount.toString(),
+                        amount = spent.getAmount().toInputAmount(),
                         coinCode = spent.getCoin().getCode(),
                         categoryCode = spent.getCategory().getCode()
                     )
