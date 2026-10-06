@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/spentListFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:id="@+id/spentListFragment"
+        android:name="com.worthit.gastospersonales.business.spent.ui.SpentListFragment"
+        android:label="@string/menu_spent"
+        tools:layout="@layout/fragment_spent_list" />
+
+    <fragment
+        android:id="@+id/spentFormFragment"
+        android:name="com.worthit.gastospersonales.business.spent.ui.SpentFormFragment"
+        android:label="@string/spent_new"
+        tools:layout="@layout/fragment_spent_form" />
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.worthit.gastospersonales.business.category.ui.CategoryFragment"
+        android:label="@string/menu_category"
+        tools:layout="@layout/fragment_category" />
+
+    <fragment
+        android:id="@+id/coinFragment"
+        android:name="com.worthit.gastospersonales.business.coin.ui.CoinFragment"
+        android:label="@string/menu_coin"
+        tools:layout="@layout/fragment_coin" />
+
+    <fragment
+        android:id="@+id/categoryReportFragment"
+        android:name="com.worthit.gastospersonales.business.spent.ui.report.CategoryReportFragment"
+        android:label="@string/menu_report"
+        tools:layout="@layout/fragment_category_report" />
+
+    <fragment
+        android:id="@+id/categoryDetailFragment"
+        android:name="com.worthit.gastospersonales.business.spent.ui.report.CategoryDetailFragment"
+        android:label="@string/report_detail_title"
+        tools:layout="@layout/fragment_category_detail" />
+</navigation>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Green color scheme, light mode. values-night/colors.xml has the same names for dark mode. -->
+<resources>
+    <color name="md_primary">#2E7D32</color>
+    <color name="md_on_primary">#FFFFFF</color>
+    <color name="md_primary_container">#B7F2B5</color>
+    <color name="md_on_primary_container">#00210A</color>
+    <color name="md_secondary">#52634F</color>
+    <color name="md_on_secondary">#FFFFFF</color>
+    <color name="md_secondary_container">#D5E8CF</color>
+    <color name="md_on_secondary_container">#101F10</color>
+    <color name="md_tertiary">#39656B</color>
+    <color name="md_on_tertiary">#FFFFFF</color>
+    <color name="md_tertiary_container">#BCEBF2</color>
+    <color name="md_on_tertiary_container">#001F23</color>
+    <color name="md_background">#F7FBF1</color>
+    <color name="md_on_background">#181D17</color>
+    <color name="md_surface">#F7FBF1</color>
+    <color name="md_on_surface">#181D17</color>
+    <color name="md_surface_variant">#DEE5D9</color>
+    <color name="md_on_surface_variant">#424940</color>
+    <color name="md_outline">#72796F</color>
+    <color name="md_outline_variant">#C2C9BD</color>
+    <color name="md_surface_container_lowest">#FFFFFF</color>
+    <color name="md_surface_container_low">#F1F5EB</color>
+    <color name="md_surface_container">#EBEFE5</color>
+    <color name="md_surface_container_high">#E5E9E0</color>
+    <color name="md_surface_container_highest">#E0E4DA</color>
+    <color name="md_inverse_surface">#2D322C</color>
+    <color name="md_inverse_on_surface">#EEF2E8</color>
+    <color name="md_inverse_primary">#A3D9A0</color>
+</resources>
