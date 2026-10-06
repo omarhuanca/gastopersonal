@@ -55,6 +55,19 @@ class SpentFormErrorsTest {
         Assert.assertEquals(SpentFormField.Category, spentErrorField(SpentRepositoryImpl.CATEGORY_NOT_FOUND))
     }
 
+    // ISSUE-003: 320 digits parse to Infinity, which used to be saved and crash every launch.
+    @Test
+    fun anAmountTooBigForADoubleIsAnAmountError() {
+        val error = validateSpentInput("9".repeat(320), "BOB", "General")
+        Assert.assertEquals(SpentFormField.Amount, error?.field)
+    }
+
+    @Test
+    fun nonFiniteTextsAreAmountErrors() {
+        Assert.assertEquals(SpentFormField.Amount, validateSpentInput("NaN", "BOB", "General")?.field)
+        Assert.assertEquals(SpentFormField.Amount, validateSpentInput("Infinity", "BOB", "General")?.field)
+    }
+
     @Test
     fun anUnknownErrorStaysOnTheDescriptionField() {
         Assert.assertEquals(SpentFormField.Description, spentErrorField("something unexpected"))

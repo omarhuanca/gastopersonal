@@ -17,6 +17,7 @@ class Spent {
         const val DESCRIPTION_CAN_NOT_BE_EMPTY = "Description can not be null"
         const val LOCAL_DATE_CAN_NOT_BE_NULL = "Local date can not be null"
         const val AMOUNT_CAN_NOT_BE_NEGATIVE = "Amount can not be negative"
+        const val AMOUNT_MUST_BE_FINITE = "Amount must be a finite number"
         const val COIN_CAN_NOT_BE_NULL = "Coin can not be null"
         const val CATEGORY_CAN_NOT_BE_NULL = "Category can not be null"
     }
@@ -31,6 +32,7 @@ class Spent {
     ) {
         if (description.isEmpty()) throw Exception(DESCRIPTION_CAN_NOT_BE_EMPTY)
         if (null == localDate) throw Exception(LOCAL_DATE_CAN_NOT_BE_NULL)
+        if (!amount.isFinite()) throw Exception(AMOUNT_MUST_BE_FINITE)
         if (0 > amount) throw Exception(AMOUNT_CAN_NOT_BE_NEGATIVE)
         if (null == coin) throw Exception(COIN_CAN_NOT_BE_NULL)
         if (null == category) throw Exception(CATEGORY_CAN_NOT_BE_NULL)

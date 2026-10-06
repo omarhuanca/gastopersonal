@@ -39,4 +39,20 @@ class SpentTest {
             Spent(description, localDate, -1.0, coin, category)
         }
     }
+
+    // ISSUE-003: an Infinity amount was saved and crashed the app on every launch.
+    @Test
+    fun infiniteAmountIsRejected() {
+        val error = Assert.assertThrows(Exception::class.java) {
+            Spent(description, localDate, Double.POSITIVE_INFINITY, coin, category)
+        }
+        Assert.assertEquals(Spent.AMOUNT_MUST_BE_FINITE, error.message)
+    }
+
+    @Test
+    fun nanAmountIsRejected() {
+        Assert.assertThrows(Exception::class.java) {
+            Spent(description, localDate, Double.NaN, coin, category)
+        }
+    }
 }
