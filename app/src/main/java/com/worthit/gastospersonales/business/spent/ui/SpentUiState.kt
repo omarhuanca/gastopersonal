@@ -16,6 +16,8 @@ data class SpentUiState(
     val categoryCodes: List<String> = emptyList(),
     val date: LocalDate = LocalDate.now(),
     @StringRes val error: Int? = null,
+    // The input the error is shown under.
+    val errorField: SpentFormField = SpentFormField.Description,
     val saved: Boolean = false,
     @StringRes val coinDialogError: Int? = null,
     val createdCoin: String? = null,

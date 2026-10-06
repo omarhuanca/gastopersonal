@@ -1,7 +1,6 @@
 package com.worthit.gastospersonales.business.spent.ui
 
 import android.app.Application
-import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -93,18 +92,14 @@ class SpentViewModel(
     }
 
     fun onSave(description: String, amountText: String, coinCode: String, categoryCode: String) {
-        val amount = amountText.trim().toDoubleOrNull()
-        when {
-            amount == null -> return showError(R.string.error_amount_not_number)
-            coinCode.isBlank() -> return showError(R.string.error_coin_not_selected)
-            categoryCode.isBlank() -> return showError(R.string.error_category_not_selected)
-        }
+        validateSpentInput(amountText, coinCode, categoryCode)?.let { return showError(it) }
+        val amount = amountText.trim().toDouble()
         viewModelScope.launch {
             try {
                 val spent = Spent(
                     description.trim(),
                     _uiState.value.date,
-                    amount!!,
+                    amount,
                     Coin(coinCode.trim()),
                     Category(categoryCode.trim()),
                     spentId
@@ -112,7 +107,7 @@ class SpentViewModel(
                 if (spentId != null) spentRepository.update(spent) else spentRepository.save(spent)
                 _uiState.update { it.copy(error = null, saved = true) }
             } catch (e: Exception) {
-                showError(domainErrorRes(e.message))
+                showError(SpentFormError(spentErrorField(e.message), domainErrorRes(e.message)))
             }
         }
     }
@@ -167,7 +162,7 @@ class SpentViewModel(
         _uiState.update { it.copy(error = null, saved = false) }
     }
 
-    private fun showError(@StringRes message: Int) {
-        _uiState.update { it.copy(error = message, saved = false) }
+    private fun showError(error: SpentFormError) {
+        _uiState.update { it.copy(error = error.message, errorField = error.field, saved = false) }
     }
 }

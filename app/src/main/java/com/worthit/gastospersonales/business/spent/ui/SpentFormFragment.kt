@@ -84,6 +84,9 @@ class SpentFormFragment : Fragment(R.layout.fragment_spent_form) {
 
         binding.editDescription.doAfterTextChanged { viewModel.onInputChanged() }
         binding.editAmount.doAfterTextChanged { viewModel.onInputChanged() }
+        // Picking a coin or a category also clears the error that was shown under it.
+        binding.dropdownCoin.doAfterTextChanged { viewModel.onInputChanged() }
+        binding.dropdownCategory.doAfterTextChanged { viewModel.onInputChanged() }
         binding.buttonDate.setOnClickListener { showDatePicker() }
         binding.layoutDescription.setEndIconOnClickListener { startVoiceInput() }
         binding.dropdownCoin.setOnItemClickListener { parent, _, position, _ ->
@@ -135,7 +138,12 @@ class SpentFormFragment : Fragment(R.layout.fragment_spent_form) {
             binding.dropdownCategory.setText(prefill.categoryCode, false)
             viewModel.onPrefillHandled()
         }
-        binding.layoutDescription.error = state.error?.let { getString(it) }
+        // The error goes under the input that caused it, and only there.
+        val message = state.error?.let { getString(it) }
+        binding.layoutDescription.showError(message.takeIf { state.errorField == SpentFormField.Description })
+        binding.layoutAmount.showError(message.takeIf { state.errorField == SpentFormField.Amount })
+        binding.layoutCoin.showError(message.takeIf { state.errorField == SpentFormField.Coin })
+        binding.layoutCategory.showError(message.takeIf { state.errorField == SpentFormField.Category })
 
         if (state.coinCodes != shownCoins) {
             shownCoins = state.coinCodes
@@ -175,6 +183,13 @@ class SpentFormFragment : Fragment(R.layout.fragment_spent_form) {
             closing = true
             findNavController().popBackStack()
         }
+    }
+
+    // Material keeps the space of the error line after `error = null`, which leaves a blank gap
+    // under the field. Turning the error line off when there is nothing to show removes it.
+    private fun TextInputLayout.showError(message: String?) {
+        error = message
+        if (message == null) isErrorEnabled = false
     }
 
     // Selects the stored code that matches `default` (ignoring case) if the field is still empty.
