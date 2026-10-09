@@ -138,6 +138,9 @@ class SpentFormFragment : Fragment(R.layout.fragment_spent_form) {
             binding.dropdownCategory.setText(prefill.categoryCode, false)
             viewModel.onPrefillHandled()
         }
+        // Editing a spent keeps its coin and category; they can only be chosen when it is created.
+        binding.layoutCoin.isEnabled = !state.editing
+        binding.layoutCategory.isEnabled = !state.editing
         // The error goes under the input that caused it, and only there.
         val message = state.error?.let { getString(it) }
         binding.layoutDescription.showError(message.takeIf { state.errorField == SpentFormField.Description })
