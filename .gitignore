@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# gstack QA artifacts (screenshots, logs): local only
+.gstack/
