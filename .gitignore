@@ -16,3 +16,6 @@ local.properties
 
 # gstack QA artifacts (screenshots, logs): local only
 .gstack/
+
+# IDE settings: local only
+.idea/
