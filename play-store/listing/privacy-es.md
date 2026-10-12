@@ -2,7 +2,7 @@
 
 Última actualización: 9 de octubre de 2026
 
-Gastos Personales ("la aplicación") es una aplicación para Android desarrollada por Worth It. Esta política explica qué información usa la aplicación y qué hace con ella.
+Gastos Personales ("la aplicación") es una aplicación para Android desarrollada por Omar Huanca. Esta política explica qué información usa la aplicación y qué hace con ella.
 
 ## Resumen
 La aplicación no recopila, no envía y no comparte tus datos. Todo lo que registras se queda en tu teléfono.
@@ -35,4 +35,4 @@ La aplicación no recopila datos de ninguna persona, incluidos los menores de ed
 Si la aplicación cambia la forma de tratar los datos, esta política se actualizará y la fecha de arriba cambiará.
 
 ## Contacto
-Para preguntas sobre esta política: [CORREO DE CONTACTO]
+Para preguntas sobre esta política: omar.huanca.balboa@gmail.com

@@ -2,7 +2,7 @@
 
 Last updated: October 9, 2026
 
-Gastos Personales ("the app") is an Android app developed by Worth It. This policy explains what information the app uses and what it does with it.
+Gastos Personales ("the app") is an Android app developed by Omar Huanca. This policy explains what information the app uses and what it does with it.
 
 ## Summary
 The app does not collect, send or share your data. Everything you enter stays on your phone.
@@ -35,4 +35,4 @@ The app does not collect data from anyone, including children.
 If the app changes how it handles data, this policy will be updated and the date above will change.
 
 ## Contact
-For questions about this policy: [CONTACT EMAIL]
+For questions about this policy: omar.huanca.balboa@gmail.com
