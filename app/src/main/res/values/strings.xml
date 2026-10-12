@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Gastos Personales</string>
-    <string name="menu_spent">Spents</string>
-    <string name="spent_new">New spent</string>
-    <string name="spent_add">Add spent</string>
-    <string name="spent_empty">No spents yet. Tap + to add one.</string>
+    <string name="menu_spent">Expenses</string>
+    <string name="spent_new">New expense</string>
+    <string name="spent_add">Add expense</string>
+    <string name="spent_empty">No expenses yet. Tap + to add one.</string>
     <string name="menu_category">Categories</string>
     <string name="menu_coin">Coins</string>
     <string name="category_code_hint">Category</string>
@@ -19,9 +19,9 @@
     <string name="language_english">English</string>
     <string name="language_spanish">Español</string>
     <string name="category_already_exists">Category already exists</string>
-    <string name="category_in_use">This category is used by a spent and cannot be deleted</string>
+    <string name="category_in_use">This category is used by an expense and cannot be deleted</string>
     <string name="coin_already_exists">Coin already exists</string>
-    <string name="coin_in_use">This coin is used by a spent and cannot be deleted</string>
+    <string name="coin_in_use">This coin is used by an expense and cannot be deleted</string>
     <string name="error_code_empty">Code cannot be empty</string>
     <string name="error_description_empty">Description cannot be empty</string>
     <string name="error_amount_negative">Amount cannot be negative</string>
@@ -44,11 +44,11 @@
     <string name="voice_prompt">Speak the description</string>
     <string name="voice_unavailable">Voice input is not available on this device</string>
     <string name="share">Share</string>
-    <string name="spent_delete_title">Delete spent?</string>
-    <string name="spent_delete_message">Are you sure you want to delete this spent? It will be permanently removed and this cannot be undone.</string>
+    <string name="spent_delete_title">Delete expense?</string>
+    <string name="spent_delete_message">Are you sure you want to delete this expense? It will be permanently removed and this cannot be undone.</string>
     <string name="accept">Accept</string>
-    <string name="spent_share_chooser">Share spent</string>
-    <string name="spent_edit_title">Edit spent</string>
+    <string name="spent_share_chooser">Share expense</string>
+    <string name="spent_edit_title">Edit expense</string>
     <string name="menu_report">Group by category</string>
     <string name="report_total">Total: %1$s</string>
     <string name="report_detail_title">Category detail</string>
@@ -58,10 +58,10 @@
     <string name="report_clear">Clear</string>
     <string name="report_start">Start: %1$s</string>
     <string name="report_end">End: %1$s</string>
-    <string name="report_empty">No spents in this date range.</string>
+    <string name="report_empty">No expenses in this date range.</string>
     <plurals name="report_spents_count">
-        <item quantity="one">%d spent</item>
-        <item quantity="other">%d spents</item>
+        <item quantity="one">%d expense</item>
+        <item quantity="other">%d expenses</item>
     </plurals>
-    <string name="category_empty">No categories yet. Create them from the Category field when adding a spent.</string>
+    <string name="category_empty">No categories yet. Create them from the Category field when adding an expense.</string>
 </resources>
