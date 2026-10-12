@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Feature graphic 1024x500 for Google Play (en). Icon geometry copied from icon.svg. Render: rsvg-convert play-store/graphics/feature-en.svg -o ...png, then save as RGB (no alpha). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500" viewBox="0 0 1024 500">
+  <defs>
+    <linearGradient id="bg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1024" y2="500">
+      <stop offset="0" stop-color="#43A047"/>
+      <stop offset="1" stop-color="#1B5E20"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="500" fill="url(#bg)"/>
+  <!-- icon, scaled from the 108 grid; the glyph is centered around (54,57) -->
+  <g transform="translate(40,60) scale(3.7)">
+    <path fill="#FFC857" d="M47,38a11,11 0 1 0 22,0a11,11 0 1 0 -22,0z"/>
+    <path fill="none" stroke="#E0A526" stroke-width="1.6" d="M51.5,38a6.5,6.5 0 1 0 13,0a6.5,6.5 0 1 0 -13,0z"/>
+    <path fill="#FFFFFF" fill-rule="evenodd" d="M33,42h42a6,6 0 0 1 6,6v22a6,6 0 0 1 -6,6h-42a6,6 0 0 1 -6,-6v-22a6,6 0 0 1 6,-6z M64,53h11a5,5 0 0 1 0,10h-11a5,5 0 0 1 0,-10z M72,58a2,2 0 1 0 4,0a2,2 0 1 0 -4,0z"/>
+  </g>
+  <text x="440" y="235" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="700" fill="#FFFFFF">Gastos</text>
+  <text x="440" y="310" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="700" fill="#FFFFFF">Personales</text>
+  <text x="442" y="365" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#C8E6C9">Track your spending. No account, no internet.</text>
+</svg>
