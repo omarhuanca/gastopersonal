@@ -19,3 +19,7 @@ local.properties
 
 # IDE settings: local only
 .idea/
+
+# Signing keys: never in the repo
+*.jks
+*.keystore

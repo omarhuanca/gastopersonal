@@ -20,6 +20,20 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Upload key for Google Play. Path and passwords come from ~/.gradle/gradle.properties
+    // (GASTOS_UPLOAD_STORE_FILE, _STORE_PASSWORD, _KEY_ALIAS, _KEY_PASSWORD), never from the repo.
+    signingConfigs {
+        val storeFile = providers.gradleProperty("GASTOS_UPLOAD_STORE_FILE").orNull
+        if (storeFile != null) {
+            create("upload") {
+                this.storeFile = file(storeFile)
+                storePassword = providers.gradleProperty("GASTOS_UPLOAD_STORE_PASSWORD").orNull
+                keyAlias = providers.gradleProperty("GASTOS_UPLOAD_KEY_ALIAS").orNull
+                keyPassword = providers.gradleProperty("GASTOS_UPLOAD_KEY_PASSWORD").orNull
+            }
+        }
+    }
+
     buildTypes {
         release {
             // R8 shrinks and obfuscates the code, and removes unused resources.
@@ -29,6 +43,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfigs.findByName("upload")?.let { signingConfig = it }
         }
 
         // For checking the release build on a phone: same code and R8 settings as release, signed
@@ -50,6 +65,17 @@ android {
     }
     buildFeatures {
         viewBinding = true
+    }
+}
+
+// Google Play rejects an unsigned bundle, so fail early instead of producing one.
+gradle.taskGraph.whenReady {
+    val buildsRelease = allTasks.any { it.path == ":app:bundleRelease" || it.path == ":app:assembleRelease" }
+    if (buildsRelease && android.signingConfigs.findByName("upload") == null) {
+        throw GradleException(
+            "Release needs the upload key: set GASTOS_UPLOAD_STORE_FILE, GASTOS_UPLOAD_STORE_PASSWORD, " +
+                "GASTOS_UPLOAD_KEY_ALIAS and GASTOS_UPLOAD_KEY_PASSWORD in ~/.gradle/gradle.properties"
+        )
     }
 }
 
