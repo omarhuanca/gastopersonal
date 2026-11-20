@@ -59,9 +59,9 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val isHome = destination.id == R.id.spentListFragment
             binding.toolbar.menu.setGroupVisible(0, isHome)
-            // Home shows the app name; every other screen shows its own name. NavigationUI already
-            // sets the label, this only swaps the home label for the app name.
-            binding.toolbar.title = if (isHome) getString(R.string.app_name) else destination.label
+            // Home shows the app title in the chosen language; every other screen shows its own name.
+            // NavigationUI already sets the label, this only swaps the home label for the app title.
+            binding.toolbar.title = if (isHome) getString(R.string.home_title) else destination.label
         }
     }
 
