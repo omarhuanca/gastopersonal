@@ -23,3 +23,6 @@ local.properties
 # Signing keys: never in the repo
 *.jks
 *.keystore
+
+# Kotlin compiler session logs: local only
+.kotlin/
