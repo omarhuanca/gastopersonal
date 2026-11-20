@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Gastos Personales</string>
+    <!-- Title of the home screen bar; follows the language chosen in the app. app_name stays the brand. -->
+    <string name="home_title">Personal Expenses</string>
     <string name="menu_spent">Expenses</string>
     <string name="spent_new">New expense</string>
     <string name="spent_add">Add expense</string>
